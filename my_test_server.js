@@ -32,14 +32,30 @@ http
     console.log(url);
 
     switch (url) {
+      // * =================================================================
       case "/":
         console.log("contact page");
         staticFile(res, "/main.html", ".html");
         break;
+      // * =================================================================
       case "/contact":
         console.log("contact page");
         staticFile(res, "/contact.html", ".html");
         break;
+      // * =================================================================
+      case "/api/data": // Добавленный маршрут для получения JSON данных
+        const jsonPath = "./public/data.json"; // Путь к вашему JSON файлу
+        res.setHeader("Content-Type", "application/json");
+        fs.readFile(jsonPath, (error, data) => {
+          if (error) {
+            res.statusCode = 500;
+            res.end(JSON.stringify({ error: "Internal Server Error" }));
+          } else {
+            res.end(data);
+          }
+        });
+        break;
+      // * =================================================================
       default:
         const extname = String(path.extname(url)).toLocaleLowerCase();
         if (extname in mimeTypes) {

@@ -1,0 +1,16 @@
+{
+  "message": "Hello, world!",
+  "parameters": {
+    "param1": "Value 1",
+    "param2": "Value 2",
+    "param3": 3
+  },
+  "nested": {
+    "key1": "Nested Value 1",
+    "key2": "Nested Value 2",
+    "key3": {
+      "subkey1": "Subkey Value 1",
+      "subkey2": "Subkey Value 2"
+    }
+  }
+}
